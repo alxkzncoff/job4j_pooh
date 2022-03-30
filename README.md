@@ -1,0 +1,1 @@
+[![Actions Status](https://github.com/alxkzncoff/job4j_pooh/workflows/java-ci/badge.svg)](https://github.com/alxkzncoff/job4j_pooh/actions)
