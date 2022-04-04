@@ -48,4 +48,14 @@ public class QueueServiceTest {
         );
         assertThat(result.text(), is("temperature=15"));
     }
+
+    @Test
+    public void whenNotGETNotPOST() {
+        QueueService queueService = new QueueService();
+        Resp result = queueService.process(
+                new Req("PUT", "", "", "")
+        );
+        assertThat(result.status(), is("501"));
+        assertThat(result.text(), is(""));
+    }
 }

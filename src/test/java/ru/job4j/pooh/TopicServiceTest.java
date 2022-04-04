@@ -61,4 +61,14 @@ public class TopicServiceTest {
         assertThat(result1.text(), is("temperature=10"));
         assertThat(result2.text(), is("temperature=15"));
     }
+
+    @Test
+    public void whenNotPOSTNotGet() {
+        TopicService topicService = new TopicService();
+        Resp result = topicService.process(
+                new Req("PUT", "", "", "")
+        );
+        assertThat(result.status(), is("501"));
+        assertThat(result.text(), is(""));
+    }
 }
