@@ -19,9 +19,8 @@ public class QueueService implements Service {
                 if (queue.isEmpty()) {
                     yield new Resp("", "204");
                 } else {
-                    yield new Resp(queue.getOrDefault(
-                            req.getSourceName(), new ConcurrentLinkedQueue<>()).poll(),
-                            "200");
+                    ConcurrentLinkedQueue<String> localQueue = queue.getOrDefault(req.getSourceName(), new ConcurrentLinkedQueue<>());
+                    yield localQueue.isEmpty() ? new Resp("", "201") : new Resp(localQueue.poll(), "200");
                 }
             }
             default -> new Resp("", "501");
